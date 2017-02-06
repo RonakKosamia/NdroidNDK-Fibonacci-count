@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ndkApp</string>
+    <string name = "title">get fib results here..</string>
+    <string name="fibJR">fibJR</string>
+    <string name="fibNR">fibNR</string>
+    <string name="results"> Get results</string>
+    <string name="resultview"> </string>
+
+</resources>
