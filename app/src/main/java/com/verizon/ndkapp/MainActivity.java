@@ -1,6 +1,8 @@
 package com.verizon.ndkapp;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -41,26 +43,49 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-
+        try {
+            InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
      String s = input.getText().toString();
         if(TextUtils.isEmpty(s)){
             return;
         }
-        long n = Long.parseLong(s);
-        long result = 0;
-        long t = System.currentTimeMillis();
-        switch(this.type.getCheckedRadioButtonId()){
-            case R.id.type_fib_JR:
-                result = FibLib.fibJavaRecursive(n);
-                break;
+        final ProgressDialog dialog = ProgressDialog.show(this, "", "calculating...",true);
+        final long n = Long.parseLong(s);
+        new AsyncTask<Void, Void, String>() {
 
-            case R.id.type_fib_NR:
-                // Example of a call to a native method
-                result = FibLib.fibNativeRecursive(n);
-                break;
-        }
-        t = System.currentTimeMillis() - t;
-        this.output.setText(String.format("fib(%d) = %d in %d ms", n,result,t));
+            @Override
+            protected String doInBackground(Void... params) {
+                long result = 0;
+                long t = System.currentTimeMillis();
+                switch (MainActivity.this.type.getCheckedRadioButtonId()) {
+                    case R.id.type_fib_JR:
+                        result = FibLib.fibJavaRecursive(n);
+                        break;
+
+                    case R.id.type_fib_NR:
+                        // Example of a call to a native method
+                        result = FibLib.fibNativeRecursive(n);
+                        break;
+                }
+                t = System.currentTimeMillis() - t;
+                return String.format("fib(%d) = %d in %d ms", n,result,t);
+            }
+
+
+            @Override
+            protected void onPostExecute(String result) {
+                dialog.dismiss();
+                MainActivity.this.output.setText(result);
+               // super.onPostExecute(result);
+            }
+        }.execute();
+
+
+
     }
 
 
