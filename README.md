@@ -10,7 +10,7 @@ Android application - NDK library sample to get fibonacci count.
   
  #To use this repo: 
   
-    - clone this repo using git bash : git clone https://github.com/RonakKosamia/NdroidNDK-Fibonaccicount.git
+    - clone this repo using git bash : git clone https://github.com/RonakKosamia/NdroidNDK-Fibonacci-count.git
     - Open android studio application on your PC/Laptop
     - use 'open existing android studio project' option to import this application
     - make sure you have installed latest gradle, API level 17-25
