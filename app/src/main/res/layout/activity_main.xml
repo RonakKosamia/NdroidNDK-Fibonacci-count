@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -8,15 +9,17 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.verizon.ndkapp.MainActivity">
+    tools:context="com.verizon.ndkapp.MainActivity"
+    android:background="@android:color/holo_blue_light">
 
     <TextView
         android:id="@+id/sample_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="20sp"
-        android:text="@string/title" />
+        android:textSize="30sp"
+        android:text="@string/title"
+        android:textColor="@android:color/background_light" />
 
     <EditText
         android:id="@+id/input"
@@ -27,7 +30,9 @@
         android:layout_below="@+id/sample_text"
         android:layout_alignParentStart="true"
         android:layout_marginTop="37dp"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        tools:background="#FFFFFF"
+        android:textColor="@android:color/white" />
 
     <RadioGroup
         android:id="@+id/type"
@@ -43,16 +48,20 @@
             android:layout_height="wrap_content"
             android:id="@+id/type_fib_JR"
             android:layout_below="@+id/input"
+            android:layout_marginLeft="60dp"
             android:layout_marginTop="54dp"
-            android:layout_alignParentStart="true"/>
+            android:layout_alignParentStart="true"
+            android:gravity="center_vertical|center_horizontal|center|start" />
         <RadioButton
             android:text="@string/fibNR"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/type_fib_NR"
             android:layout_below="@+id/input"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="54dp"
-            android:layout_alignParentStart="true"/>
+            android:layout_alignParentStart="true"
+            android:gravity="center_vertical|center_horizontal|center|start" />
         </RadioGroup>
 
     <Button
@@ -61,16 +70,18 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/getoutput" />
+        android:id="@+id/getoutput"
+        android:background="@android:drawable/button_onoff_indicator_off" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/getoutput"
-        android:layout_alignEnd="@+id/sample_text"
-        android:layout_marginTop="72dp"
         android:gravity="center"
         android:textSize="20sp"
-        android:id="@+id/resultview" />
+        android:id="@+id/resultview"
+        android:layout_below="@+id/getoutput"
+        android:background="@android:drawable/zoom_plate"
+        android:textColorLink="@android:color/white"
+        android:textColor="@android:color/background_light" />
 
 </RelativeLayout>
