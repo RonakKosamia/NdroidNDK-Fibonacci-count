@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">ndkApp</string>
-    <string name = "title">Get Fibonacci Results Here..</string>
-    <string name="fibJR">fibJR</string>
-    <string name="fibNR">fibNR</string>
+    <string name = "title">Get Fibonacci Results Here</string>
+    <string name="fibJR">Java</string>
+    <string name="fibNR">Native(C++)</string>
     <string name="results"> Get results</string>
     <string name="resultview"> </string>
 

@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             this.input = (EditText)findViewById(R.id.input);
             this.type = (RadioGroup)findViewById(R.id.type);
             this.output = (TextView) findViewById(R.id.resultview);
-
+       type.check(R.id.type_fib_JR);
         Button button = (Button) findViewById(R.id.getoutput);
         button.setOnClickListener(this);
 
@@ -60,19 +61,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             protected String doInBackground(Void... params) {
                 long result = 0;
+                String resulttext = "";
                 long t = System.currentTimeMillis();
                 switch (MainActivity.this.type.getCheckedRadioButtonId()) {
                     case R.id.type_fib_JR:
-                        result = FibLib.fibJavaRecursive(n);
+                        result = FibLib.fibJavaIterative(n);
+                        resulttext = "  Using Java calculations";
                         break;
 
                     case R.id.type_fib_NR:
                         // Example of a call to a native method
-                        result = FibLib.fibNativeRecursive(n);
+                        result = FibLib.fibNativeIterative(n);
+                        resulttext = " Using Native C++ calculations";
                         break;
                 }
                 t = System.currentTimeMillis() - t;
-                return String.format("fib(%d) = %d in %d ms", n,result,t);
+                return String.format("fib(%d) = %d in %d ms"+resulttext, n,result,t);
             }
 
 
