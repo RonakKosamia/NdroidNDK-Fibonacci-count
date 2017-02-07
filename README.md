@@ -3,8 +3,8 @@ Android application - NDK library sample to get fibonacci count.
 
 - This application will give fibbonacci count from user input(number). 
  it will count results two way: 
-  1. count using default android way 'java recursive fib count' . & 
-  2. count using c/c++ native library call. (main application will make call to Native library and get the fib count from cpp lib).
+  1. count using default android way 'java iterative fibonacci count' . & 
+  2. count using c/c++ native library call. (main application will make call to Native library and get the fibonacci count from cpp lib).
   
   
   
